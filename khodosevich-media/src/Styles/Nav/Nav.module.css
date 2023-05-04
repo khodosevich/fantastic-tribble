@@ -17,4 +17,16 @@ ul li {
   font-weight: 700;
 }
 
-/*# sourceMappingURL=Nav.css.map */
+.navbar__item {
+  transition: all 0.5s;
+}
+
+.navbar__item:hover {
+  color: rebeccapurple;
+}
+
+.navbar__item.active {
+  color: yellow;
+}
+
+/*# sourceMappingURL=Nav.module.css.map */
