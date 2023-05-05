@@ -36,11 +36,11 @@ const Content = () => {
 
                     <div className={classes.old__posts}>
 
-                        <Post text='post 1' />
-                        <Post text='post 2' />
-                        <Post text='post 3' />
-                        <Post text='post 4' />
-                        <Post text='post 5' />
+                        <Post text='post 1' like='100'/>
+                        <Post text='post 2' like='0' />
+                        <Post text='post 3' like='10'/>
+                        <Post text='post 4' like='42'/>
+                        <Post text='post 5' like='1'/>
 
 
                     </div>
