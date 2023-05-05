@@ -9,6 +9,7 @@ const Content = () => {
         console.log('hello');
     }
 
+
     return (
         <div className={classes.content}>
                 <div>
@@ -34,9 +35,14 @@ const Content = () => {
                     </div>
 
                     <div className={classes.old__posts}>
-                        <Post />
-                        <Post />
-                        <Post />
+
+                        <Post text='post 1' />
+                        <Post text='post 2' />
+                        <Post text='post 3' />
+                        <Post text='post 4' />
+                        <Post text='post 5' />
+
+
                     </div>
             </div>
         </div>

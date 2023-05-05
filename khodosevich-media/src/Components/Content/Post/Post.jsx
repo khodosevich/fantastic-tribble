@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from "../../../Styles/Content/Post/Post.module.css";
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className={classes.old__post__item}>
-            <p>Post is godd</p>
+            <p>{props.text}</p>
         </div>
     );
 };
