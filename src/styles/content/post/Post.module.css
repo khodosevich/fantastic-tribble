@@ -1,0 +1,18 @@
+.old__post__item {
+  background: #ffffff;
+  color: #3d5294;
+  width: 80%;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.like {
+  background: #b9beb9;
+  padding: 10px;
+  width: 100px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #6b1eb4;
+}
+
+/*# sourceMappingURL=post.module.css.map */

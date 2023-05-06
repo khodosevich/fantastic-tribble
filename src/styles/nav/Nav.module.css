@@ -1,0 +1,31 @@
+.navbar {
+  grid-area: navbar;
+  background: #3d5294;
+  height: 800px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+ul li {
+  color: white;
+  list-style-type: none;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.navbar__item {
+  transition: all 0.2s;
+}
+.navbar__item:hover {
+  transform: scale(1.05);
+}
+
+.active {
+  color: #8bd0ee;
+}
+
+/*# sourceMappingURL=nav.module.css.map */
