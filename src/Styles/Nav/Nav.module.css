@@ -1,0 +1,32 @@
+.navbar {
+  grid-area: navbar;
+  background: #3d5294;
+  height: 800px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+ul li {
+  color: white;
+  list-style-type: none;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.navbar__item {
+  transition: all 0.5s;
+}
+
+.navbar__item:hover {
+  color: rebeccapurple;
+}
+
+.navbar__item.active {
+  color: yellow;
+}
+
+/*# sourceMappingURL=Nav.module.css.map */

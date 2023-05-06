@@ -1,0 +1,22 @@
+.img__photo__user {
+  width: 150px;
+  height: 150px;
+}
+
+.user__info {
+  display: flex;
+  gap: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.name__user {
+  color: #ffffff;
+}
+
+.desc__name__user {
+  color: white;
+  max-width: 400px;
+}
+
+/*# sourceMappingURL=User.module.css.map */
