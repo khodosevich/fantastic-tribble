@@ -1,32 +1,26 @@
 import React from 'react';
 import s from '../../../styles/messages/Messages.module.css'
-import {NavLink} from "react-router-dom";
+import Dialog from "./Dialog";
 import Message from "./Message";
 
 const Messages = () => {
 
     const dialogs = [
-        {
-            name: "Matvey",
-            id: 1
-        },
-        {
-            name: "Kirill",
-            id: 2
-        },    {
-            name: "Maksim",
-            id: 3
-        }, {
-            name: "Stas",
-            id: 4
-        },
-        {
-            name: "Ivan",
-            id: 5
-        },    {
-            name: "Artem",
-            id: 6
-        }
+        {name: "Matvey", id: 1},
+        {name: "Kirill", id: 2},
+        {name: "Maksim", id: 3},
+        {name: "Stas", id: 4},
+        {name: "Ivan", id: 5},
+        {name: "Artem", id: 6}
+    ]
+    const messages = [
+        {id:1 , text:"> hi"},
+        {id:2 , text:"> yo"},
+        {id:3 , text:"> how are you"},
+        {id:4 , text:"> im nice , what about you?"},
+        {id:5 , text:"> ohh, cool"},
+        {id:6 , text:"> goodbye"},
+        {id:7 , text:"> okay"},
     ]
 
 
@@ -34,20 +28,14 @@ const Messages = () => {
         <div className={s.bg__messages}>
             <div className={s.dialogs__item}>
                 {dialogs.map((user) => (
-                    <Message id={user.id} name={user.name}/>
+                    <Dialog id={user.id} name={user.name}/>
                 ))}
             </div>
 
             <div className={s.messages}>
-                <div className={s.message__item}>
-                        hi
-                </div>
-                <div className={s.message__item}>
-                        hey
-                </div>
-                <div className={s.message__item}>
-                    how are you
-                </div>
+                {messages.map((user) => (
+                    <Message id={user.id} text={user.text}/>
+                ))}
             </div>
         </div>
     );

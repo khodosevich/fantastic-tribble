@@ -7,7 +7,7 @@
 
 .dialogs__item {
   grid-area: dialogs;
-  background: #ffffff;
+  background: #7cb3f5;
   padding: 20px 0 20px 20px;
 }
 
@@ -21,8 +21,12 @@
 
 .messages {
   grid-area: messages;
-  background: #ff0000;
+  background: #e3e3e3;
   padding: 20px 0 20px 20px;
+}
+
+.message__item {
+  padding: 5px;
 }
 
 /*# sourceMappingURL=Messages.module.css.map */
