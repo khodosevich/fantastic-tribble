@@ -20,10 +20,16 @@ input{
 .App{
   width: 1200px;
   margin: 0 auto;
+
+}
+
+.main__container{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 
-.wrapper{
+.wrapper {
   display: grid;
   grid-template-areas:
           "header header "

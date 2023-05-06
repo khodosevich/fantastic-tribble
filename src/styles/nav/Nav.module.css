@@ -1,7 +1,7 @@
 .navbar {
   grid-area: navbar;
   background: #3d5294;
-  height: 800px;
+  height: 100%;
 }
 
 ul {
@@ -28,4 +28,4 @@ ul li {
   color: #8bd0ee;
 }
 
-/*# sourceMappingURL=nav.module.css.map */
+/*# sourceMappingURL=Nav.module.css.map */

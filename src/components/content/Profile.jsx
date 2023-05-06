@@ -4,7 +4,6 @@ import Post from "./post/Post";
 import UserInfo from "./user/UserInfo";
 import {Button } from "@mui/material"
 import SendIcon from '@mui/icons-material/Send';
-import TextField from '@mui/material/TextField';
 
 const Profile = () => {
 
@@ -25,12 +24,12 @@ const Profile = () => {
                     <div className={classes.new__posts}>
 
                         <div>
-                            <p>create a new post:</p>
-                            <TextField id="outlined-basic" sx={{width:"420px"}} label="New post" variant="outlined" />
+                            <p className={classes.create__new__post} >create a new post:</p>
+                            <input className={classes.input} placeholder="write something" type="text"/>
                         </div>
 
                         <div className={classes.submit__btn}>
-                            <Button variant={"contained"} sx={{backgroundColor: "black"}} endIcon={<SendIcon />} onClick={hello} >
+                            <Button variant={"contained"} endIcon={<SendIcon />} onClick={hello} >
                                 new post
                             </Button>
                         </div>

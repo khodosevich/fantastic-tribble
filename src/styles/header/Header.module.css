@@ -1,11 +1,15 @@
 .headerBar {
-  background: #ffffff;
+  background: #3d5294;
   grid-area: header;
 }
 
 .headerLogo {
   margin-left: 30px;
   margin-top: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: default;
 }
 
-/*# sourceMappingURL=header.module.css.map */
+/*# sourceMappingURL=Header.module.css.map */

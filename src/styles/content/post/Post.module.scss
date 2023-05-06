@@ -2,12 +2,19 @@
 .old__post__item{
   background: #ffffff;
   color: #3d5294;
-  width: 80%;
+  width: 40%;
   border-radius: 20px;
 
-
   padding: 20px;
+
+  transition: all 0.5s;
+
+  &:hover {
+      transform: scale(1.03);
+  }
 }
+
+
 
 .like{
   background: #b9beb9;
@@ -16,4 +23,11 @@
   border-radius: 20px;
   cursor: pointer;
   color: #6b1eb4;
+
+  transition: all 0.5s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
 }

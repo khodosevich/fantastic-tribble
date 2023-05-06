@@ -11,19 +11,21 @@ import Music from "./components/pages/music/Music";
 
 function App() {
   return (   <BrowserRouter>
+          <div className="main__container">
                 <div className="App">
                     <div className="wrapper">
                         <Header/>
                         <Nav/>
                             <Routes>
                                  <Route path="/" element={<Profile />} />
-                                 <Route path="/messages" element={<Messages />} />
-                                <Route path="/news" element={<News />} />
+                                 <Route path="/messages/*" element={<Messages />} />
+                                <Route path="/news" element={<news />} />
                                 <Route path="/music" element={<Music />} />
                                 <Route path="/setting" element={<Settings />} />
                             </Routes>
                     </div>
                 </div>
+          </div>
       </BrowserRouter>
   );
 }

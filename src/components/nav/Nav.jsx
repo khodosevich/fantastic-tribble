@@ -9,12 +9,12 @@ const Nav = () => {
         {
             name: "Profile",
             link: "/",
-        }, {
-            name: "News",
-            link: "/news",
-        }, {
+        },{
             name: "Messages",
             link: "/messages",
+        }, {
+            name: "News",
+            link: "/News",
         }, {
             name: "Music",
             link: "/music",

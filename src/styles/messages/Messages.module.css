@@ -1,5 +1,28 @@
 .bg__messages {
-  background: #ff0000;
+  background: #3d5294;
+  display: grid;
+  grid-template-areas: "dialogs messages ";
+  grid-template-columns: 2fr 10fr;
 }
 
-/*# sourceMappingURL=messages.module.css.map */
+.dialogs__item {
+  grid-area: dialogs;
+  background: #ffffff;
+  padding: 20px 0 20px 20px;
+}
+
+.dialog {
+  color: black;
+}
+
+.dialog.active {
+  color: red;
+}
+
+.messages {
+  grid-area: messages;
+  background: #ff0000;
+  padding: 20px 0 20px 20px;
+}
+
+/*# sourceMappingURL=Messages.module.css.map */
