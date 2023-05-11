@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "../../../styles/content/Content.module.css";
+import classes from "../../../../styles/content/Content.module.css";
 
 const UserBg = () => {
     return (

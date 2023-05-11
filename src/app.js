@@ -1,7 +1,7 @@
 import "./app.css"
 import Nav from "./components/nav/Nav";
 import Header from "./components/header/Header";
-import Profile from "./components/content/Profile";
+import Profile from "./components/pages/profile/Profile";
 import Messages from "./components/pages/messages/Messages";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import News from "./components/pages/news/News";

@@ -1,9 +1,11 @@
-import React from 'react';
-import classes from "../../../styles/content/Content.module.css";
+import React, {useState} from 'react';
+import classes from "../../../../styles/content/Content.module.css";
 import {Button} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
 const NewPost = () => {
+
+
     return (
         <div>
             <div>
@@ -12,7 +14,8 @@ const NewPost = () => {
             </div>
 
             <div className={classes.submit__btn}>
-                <Button variant={"contained"} endIcon={<SendIcon />} >
+                <Button
+                    variant={"contained"} endIcon={<SendIcon />} >
                     new post
                 </Button>
             </div>

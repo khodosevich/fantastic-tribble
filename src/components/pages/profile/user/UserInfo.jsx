@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "../../../styles/content/user/User.module.css";
+import classes from "../../../../styles/content/user/User.module.css";
 
 const UserInfo = () => {
     return (
