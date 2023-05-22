@@ -5,7 +5,6 @@ import SendIcon from "@mui/icons-material/Send";
 
 const NewPost = () => {
 
-
     return (
         <div>
             <div>

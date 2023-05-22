@@ -4,12 +4,12 @@ import Header from "./components/header/Header";
 import Profile from "./components/pages/profile/Profile";
 import Messages from "./components/pages/messages/Messages";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import News from "./components/pages/news/News";
 import Settings from "./components/pages/setting/Settings";
 import Music from "./components/pages/music/Music";
+import News from "./components/pages/news/News";
 
 
-function App() {
+function App(props) {
   return (   <BrowserRouter>
           <div className="main__container">
                 <div className="App">
@@ -17,9 +17,9 @@ function App() {
                         <Header/>
                         <Nav/>
                             <Routes>
-                                 <Route path="/" element={<Profile />} />
-                                 <Route path="/messages/*" element={<Messages />} />
-                                <Route path="/news" element={<news />} />
+                                 <Route path="/" element={<Profile state={props.state.profilePage} />} />
+                                 <Route path="/messages/*" element={<Messages state={props.state.dialogsPage}/>} />
+                                <Route path="/news" element={<News />} />
                                 <Route path="/music" element={<Music />} />
                                 <Route path="/setting" element={<Settings />} />
                             </Routes>
