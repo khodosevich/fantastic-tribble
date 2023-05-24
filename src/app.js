@@ -10,12 +10,12 @@ import News from "./components/pages/news/News";
 
 
 function App(props) {
-  return (   <BrowserRouter>
+  return (
           <div className="main__container">
                 <div className="App">
                     <div className="wrapper">
                         <Header/>
-                        <Nav/>
+                        <Nav state={props.state} />
                             <Routes>
                                  <Route path="/" element={<Profile state={props.state.profilePage} />} />
                                  <Route path="/messages/*" element={<Messages state={props.state.dialogsPage}/>} />
@@ -26,7 +26,6 @@ function App(props) {
                     </div>
                 </div>
           </div>
-      </BrowserRouter>
   );
 }
 

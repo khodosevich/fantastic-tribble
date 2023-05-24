@@ -17,6 +17,10 @@ ul li {
   font-weight: 700;
 }
 
+li {
+  list-style-type: none;
+}
+
 .navbar__item {
   transition: all 0.2s;
 }
@@ -26,6 +30,22 @@ ul li {
 
 .active {
   color: #8bd0ee;
+}
+
+.photo_friend {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.friends {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card_item {
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=Nav.module.css.map */

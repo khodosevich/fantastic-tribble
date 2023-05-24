@@ -6,7 +6,7 @@
   grid-template-areas:
           "dialogs messages ";
 
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 4fr 10fr;
 }
 
 .dialogs__item {
@@ -17,8 +17,27 @@
 
 }
 
+.card_item{
+  display: flex;
+  align-items: center;
+
+}
+
+.photo{
+
+
+}
+
+.img{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+
+}
+
 .dialog{
   color: black;
+
 }
 
 .dialog.active {
@@ -32,6 +51,13 @@
   padding: 20px 0 20px 20px;
 }
 
-.message__item{
+.message__item {
+  padding: 5px;
+}
+
+
+
+.img{
+  background: #000;
   padding: 5px;
 }
