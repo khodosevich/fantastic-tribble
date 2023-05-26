@@ -3,14 +3,16 @@ import classes from "../../../../styles/content/Content.module.css";
 import {Button} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
+
 const NewPost = (props) => {
 
     let newPost = React.createRef();
 
 
-    let addPost = () => {
+    let addNewPost = () => {
         let text = newPost.current.value;
-        console.log(text);
+        props.addPost(text);
+        newPost.current.value = "";
     }
 
     return (
@@ -24,7 +26,7 @@ const NewPost = (props) => {
 
             <div className={classes.submit__btn}>
                 <Button
-                    onClick={ addPost }
+                    onClick={ addNewPost }
 
                     variant={"contained"} endIcon={<SendIcon />} >
                     new post

@@ -44,10 +44,15 @@ li{
   max-height: 50px;
 }
 
+.title__friends{
+  padding-left: 15px;
+}
+
 .friends{
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 5px;
 }
 
 .cards_items{

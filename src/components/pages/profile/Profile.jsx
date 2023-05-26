@@ -13,7 +13,7 @@ const Profile = (props) => {
                 <div >
                     <UserInfo />
                     <div className={classes.new__posts}>
-                      <NewPost posts={props.state.posts}/>
+                      <NewPost addPost={props.addPost} posts={props.state.posts}/>
                     </div>
 
                     <div className={classes.old__posts}>

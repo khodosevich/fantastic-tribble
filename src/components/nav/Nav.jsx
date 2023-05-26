@@ -35,7 +35,7 @@ const Nav = (props) => {
             </ul>
 
 
-            <h3>My friends:</h3>
+            <h3 className={s.title__friends}>My friends:</h3>
             <div className={s.friends}>
 
                 {props.state.sideBar.friends.map((x) => (

@@ -2,7 +2,7 @@ import React from 'react';
 import s from "../../../styles/messages/Messages.module.css";
 import Message from "./Message";
 import classes from "../../../styles/content/Content.module.css";
-import {Button} from "@mui/material";
+import {Box, Button} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
 const Conservation = (props) => {
@@ -20,14 +20,24 @@ const Conservation = (props) => {
             ))}
 
             <div className="addNewMessage">
-                <input
-                    ref={newMessage}
-                    className={classes.input} placeholder="write something" type="text"/>
-                <Button
-                    onClick={addNewMessage}
-                    variant={"contained"} endIcon={<SendIcon />} >
-                    send
-                </Button>
+
+                <Box
+                    sx={{
+                        marginTop:"10px"
+                }}>
+                    <input
+                        ref={newMessage}
+                        className={classes.input} placeholder="write something" type="text"/>
+                </Box>
+                <Box sx={{
+                    marginTop:"10px"
+                }}>
+                    <Button
+                        onClick={addNewMessage}
+                        variant={"contained"} endIcon={<SendIcon />} >
+                        send
+                    </Button>
+                </Box>
             </div>
 
         </div>
