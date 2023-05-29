@@ -34,7 +34,8 @@ let state = {
                 "likes":"1213",
                 "id":"5"
             }
-        ]
+        ],
+        newPostText:{}
     },
 
     dialogsPage: {
@@ -74,7 +75,6 @@ let state = {
 
 export let addPost = (postMessage) => {
 
-
     let newPost ={
         text: postMessage,
         likes:"0",
@@ -82,12 +82,12 @@ export let addPost = (postMessage) => {
     };
 
     state.profilePage.posts.push(newPost);
-
     rerenderEntireTree(state);
 }
 
-export let addNewMessage = (textMessages) => {
-
+export let updateNewPostText = (textMessages) => {
+    state.profilePage.newPostText = textMessages;
+    rerenderEntireTree(state);
 }
 
 export default state;

@@ -4,13 +4,9 @@ import Dialogs from "./Dialogs";
 import Conservation from "./Conservation";
 
 const Messages = (props) => {
-
-
     return (
         <div className={s.bg__messages}>
-
             <Dialogs state={props.state.dialogs}/>
-
            <Conservation state={props.state.messages}/>
         </div>
     );

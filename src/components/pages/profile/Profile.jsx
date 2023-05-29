@@ -13,16 +13,14 @@ const Profile = (props) => {
                 <div >
                     <UserInfo />
                     <div className={classes.new__posts}>
-                      <NewPost addPost={props.addPost} posts={props.state.posts}/>
+                      <NewPost addPost={props.addPost} posts={props.state.posts} updateNewPost={props.updateNewPost} />
                     </div>
-
                     <div className={classes.old__posts}>
                         {
                             props.state.posts.map( (x) => (
                             <Post text={x.text} like={x.likes} id={x.id} />
                             ))
                         }
-
                     </div>
             </div>
         </div>

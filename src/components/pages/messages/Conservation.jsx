@@ -12,15 +12,12 @@ const Conservation = (props) => {
     let addNewMessage = () =>{
         alert(newMessage.current.value);
     }
-
     return (
         <div className={s.messages}>
             {props.state.map((user) => (
                 <Message id={user.id} text={user.text}/>
             ))}
-
             <div className="addNewMessage">
-
                 <Box
                     sx={{
                         marginTop:"10px"
@@ -39,7 +36,6 @@ const Conservation = (props) => {
                     </Button>
                 </Box>
             </div>
-
         </div>
     );
 };

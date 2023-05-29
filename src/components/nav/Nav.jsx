@@ -1,28 +1,10 @@
 import React, {useState} from 'react';
 import s from "../../styles/nav/Nav.module.css"
 import {Link, NavLink} from "react-router-dom";
-
+import menuItems from "./links.json"
 
 const Nav = (props) => {
-    const [activeLink, setActiveLink] = useState(0)
-    const menuItems = [
-        {
-            name: "Profile",
-            link: "/",
-        },{
-            name: "Messages",
-            link: "/messages",
-        }, {
-            name: "News",
-            link: "/News",
-        }, {
-            name: "Music",
-            link: "/music",
-        }, {
-            name: "Setting",
-            link: "/setting",
-        }
-    ]
+    const [activeLink, setActiveLink] = useState(0);
 
     return (
         <div className={s.navbar }>
@@ -33,11 +15,8 @@ const Nav = (props) => {
                     </li>
                 ))}
             </ul>
-
-
             <h3 className={s.title__friends}>My friends:</h3>
             <div className={s.friends}>
-
                 {props.state.sideBar.friends.map((x) => (
                         <div className={s.cards_items}>
                             <div className={s.card_item}>
@@ -49,7 +28,6 @@ const Nav = (props) => {
                         </div>
                     ))}
             </div>
-
         </div>
     );
 };
