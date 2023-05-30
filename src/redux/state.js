@@ -76,22 +76,22 @@ let store = {
         console.log("state change")
     } ,
 
-    addPost(postMessage){
-
-        let newPost ={
-            text: postMessage,
-            likes:"0",
-            id:"7"
-        };
-
-        this._state.profilePage.posts.push(newPost);
-        this._callSubscriber(this._state);
-    },
-
-    updateNewPostText (textMessages) {
-        this._state.profilePage.newPostText = textMessages;
-        this._callSubscriber(this._state);
-    },
+    // addPost(postMessage){
+    //
+    //     let newPost ={
+    //         text: postMessage,
+    //         likes:"0",
+    //         id:"7"
+    //     };
+    //
+    //     this._state.profilePage.posts.push(newPost);
+    //     this._callSubscriber(this._state);
+    // },
+    //
+    // updateNewPostText (textMessages) {
+    //     this._state.profilePage.newPostText = textMessages;
+    //     this._callSubscriber(this._state);
+    // },
 
     subscribe(observer){
         this._callSubscriber = observer;
@@ -99,6 +99,22 @@ let store = {
 
     getState(){
         return this._state;
+    },
+
+    dispatch(action){
+        if(action.type === "ADD-POST"){
+            let newPost ={
+                text: action.textPost,
+                likes:"0",
+                id:"7"
+            };
+            this._state.profilePage.posts.push(newPost);
+            this._callSubscriber(this._state);
+
+        }else if(action.type === "UPDATE-NEW-POST-TEXT"){
+            this._state.profilePage.newPostText = action.newPost;
+            this._callSubscriber(this._state);
+        }
     }
 
 }

@@ -16,7 +16,7 @@ const NewPost = (props) => {
         }
 
         if(text.length !== 0){
-            props.addPost(text);
+            props.dispatch({type:"ADD-POST" ,textPost: text});
         }
         newPost.current.value = "";
     }
@@ -24,8 +24,8 @@ const NewPost = (props) => {
     let onPostChange = () => {
         let text =  newPost.current.value;
 
-        props.updateNewPost(text);
-        props.updateNewPost('');
+        props.dispatch({type:"UPDATE-NEW-POST-TEXT", newPost:text });
+        props.dispatch("UPDATE-NEW-POST-TEXT","");
     }
 
     return (
