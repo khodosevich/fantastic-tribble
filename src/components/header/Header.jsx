@@ -8,7 +8,7 @@ const Header = () => {
         <div className={s.headerBar}>
             <p className={s.headerLogo}>khodosevich</p>
             <div className={s.login}>
-                login
+                log out
             </div>
         </div>
     );

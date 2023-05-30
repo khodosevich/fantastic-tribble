@@ -10,13 +10,20 @@ const NewPost = (props) => {
 
     let addNewPost = () => {
         let text = newPost.current.value;
-        props.addPost(text);
+
+        if(text.length === 0){
+            alert("length is 0! ");
+        }
+
+        if(text.length !== 0){
+            props.addPost(text);
+        }
         newPost.current.value = "";
     }
 
     let onPostChange = () => {
         let text =  newPost.current.value;
-        console.log(text)
+
         props.updateNewPost(text);
         props.updateNewPost('');
     }

@@ -9,7 +9,7 @@ const UserInfo = () => {
             </div>
             <div >
                 <h3 className={classes.name__user}>Matvey Khodosevich</h3>
-                <p className={classes.desc__name__user} >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi autem blanditiis ipsam itaque libero maiores minus nostrum repellat repudiandae sint? </p>
+                <p className={classes.desc__name__user} >I am champion! </p>
             </div>
         </div>
     );
