@@ -11,6 +11,7 @@ const UserInfo = () => {
                 <h3 className={classes.name__user}>Matvey Khodosevich</h3>
                 <p className={classes.desc__name__user} >I am champion! </p>
             </div>
+
         </div>
     );
 };

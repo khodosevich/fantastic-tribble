@@ -17,24 +17,25 @@ const Conservation = (props) => {
             {props.state.map((user) => (
                 <Message id={user.id} text={user.text}/>
             ))}
-            <div className="addNewMessage">
-                <Box
-                    sx={{
-                        marginTop:"10px"
-                }}>
+            <div
+                style={{
+                    marginTop:"100px",
+                    display:"flex",
+                    flexDirection:"row",
+                    alignItems:"center"
+                }}
+                className="addNewMessage">
                     <input
                         ref={newMessage}
-                        className={classes.input} placeholder="write something" type="text"/>
-                </Box>
-                <Box sx={{
-                    marginTop:"10px"
-                }}>
+                        className={classes.input} placeholder="write messages" type="text"/>
                     <Button
+                        style={{
+                            marginLeft:"20px"
+                        }}
                         onClick={addNewMessage}
                         variant={"contained"} endIcon={<SendIcon />} >
                         send
                     </Button>
-                </Box>
             </div>
         </div>
     );

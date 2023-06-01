@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import classes from "../../../../styles/content/Content.module.css";
 import {Button} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/state";
+
 
 
 const NewPost = (props) => {
@@ -16,7 +18,8 @@ const NewPost = (props) => {
         }
 
         if(text.length !== 0){
-            props.dispatch({type:"ADD-POST" ,textPost: text});
+            console.log(text);
+            props.dispatch(addPostActionCreator(text));
         }
         newPost.current.value = "";
     }
@@ -24,8 +27,8 @@ const NewPost = (props) => {
     let onPostChange = () => {
         let text =  newPost.current.value;
 
-        props.dispatch({type:"UPDATE-NEW-POST-TEXT", newPost:text });
-        props.dispatch("UPDATE-NEW-POST-TEXT","");
+        props.dispatch(updateNewPostTextActionCreator(text));
+        // props.dispatch(updateNewPostTextActionCreator(""));
     }
 
     return (
