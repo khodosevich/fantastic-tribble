@@ -4,17 +4,24 @@ import Message from "./Message";
 import classes from "../../../styles/content/Content.module.css";
 import {Box, Button} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import {addNewMessagesActionCreator, newMessages} from "../../../redux/state";
 
 const Conservation = (props) => {
 
-    let newMessage = React.createRef();
+    let currentValueMessages = props.state.newMessagesBody;
 
     let addNewMessage = () =>{
-        alert(newMessage.current.value);
+        props.dispatch(addNewMessagesActionCreator());
     }
+
+    let sendRequestOnNewMessages = (e) => {
+        let body = e.target.value;
+        props.dispatch(newMessages(body));
+    }
+
     return (
         <div className={s.messages}>
-            {props.state.map((user) => (
+            {props.state.messages.map((user) => (
                 <Message id={user.id} text={user.text}/>
             ))}
             <div
@@ -26,12 +33,15 @@ const Conservation = (props) => {
                 }}
                 className="addNewMessage">
                     <input
-                        ref={newMessage}
-                        className={classes.input} placeholder="write messages" type="text"/>
+                        className={classes.input}
+                        value={currentValueMessages}
+                        onChange={sendRequestOnNewMessages}
+                        placeholder="write messages" type="text"/>
                     <Button
                         style={{
                             marginLeft:"20px"
                         }}
+
                         onClick={addNewMessage}
                         variant={"contained"} endIcon={<SendIcon />} >
                         send

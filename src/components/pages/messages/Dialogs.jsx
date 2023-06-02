@@ -1,6 +1,7 @@
 import React from 'react';
 import s from "../../../styles/messages/Messages.module.css";
 import Dialog from "./Dialog";
+import {Avatar} from "@mui/material";
 
 const Dialogs = (props) => {
     return (
@@ -9,8 +10,13 @@ const Dialogs = (props) => {
                 <div className="dialogs">
                     {props.state.map((user) => (
                         <div className={s.card_item}>
-                            <div className={s.photo}>
-                                <img className={s.img} src={user.photo} alt=""/>
+                            <div >
+                                <Avatar
+                                    sx={{
+                                        width:"50px",
+                                        height:"50px"
+                                    }}
+                                    alt="Remy Sharp" src={user.photo} />
                             </div>
                             <Dialog id={user.id} name={user.name}/>
                         </div>

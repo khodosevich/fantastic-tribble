@@ -2,6 +2,9 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
+const SEND_MESSAGES = "SEND_MESSAGES";
+const UPDATE_NEW_MESSAGES = "UPDATE_NEW_MESSAGES";
+
 let store = {
     _state: {
 
@@ -43,24 +46,25 @@ let store = {
 
         dialogsPage: {
             dialogs:[
-                {"name": "Matvey", "id": 1,"photo": "https://audimediacenter-a.akamaihd.net/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_full.jpg?1581961854"},
-                {"name": "Kirill", "id": 2},
-                {"name": "Maksim", "id": 3},
-                {"name": "Stas", "id": 4},
-                {"name": "Ivan", "id": 5},
-                {"name": "Artem", "id": 6}
+                {"name": "Matvey", "id": 1,"photo": "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg"},
+                {"name": "Kirill", "id": 2 , "photo": "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" },
+                {"name": "Maksim", "id": 3 , "photo":"https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" },
+                {"name": "Stas", "id": 4 , "photo": "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg"},
+                {"name": "Ivan", "id": 5 , "photo": "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg"},
+                {"name": "Artem", "id": 6 ,"photo": "https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg"}
             ],
             messages: [
 
-                {"id":1 , "text":"> hi"},
-                {"id":2 , "text":"> yo"},
-                {"id":3 ,"text":"> how are you"},
-                {"id":4 , "text":"> im nice , what about you?"},
-                {"id":5 , "text":"> ohh, cool"},
-                {"id":6 , "text":"> goodbye"},
-                {"id":7 , "text":"> okay"}
+                {"id":1 , "text":"hi"},
+                {"id":2 , "text":"yo"},
+                {"id":3 ,"text":"how are you"},
+                {"id":4 , "text":"im nice , what about you?"},
+                {"id":5 , "text":"ohh, cool"},
+                {"id":6 , "text":"goodbye"},
+                {"id":7 , "text":"okay"}
 
-            ]
+            ],
+            newMessagesBody: ''
         },
 
         sideBar:{
@@ -114,9 +118,21 @@ let store = {
             };
             this._state.profilePage.posts.push(newPost);
             this._callSubscriber(this._state);
-
         }else if(action.type === UPDATE_NEW_POST_TEXT){
-            this._state.profilePage.newPostText = action.text;
+            this._state.profilePage.newPostText = action.body;
+            this._callSubscriber(this._state);
+        }
+
+        else if(action.type === UPDATE_NEW_MESSAGES){
+            this._state.dialogsPage.newMessagesBody = action.body;
+            this._callSubscriber(this._state);
+        }else if(action.type === SEND_MESSAGES){
+
+            let body = this._state.dialogsPage.newMessagesBody;
+
+            this._state.dialogsPage.newMessagesBody = '';
+
+            this._state.dialogsPage.messages.push( {"id":8 , "text": body });
             this._callSubscriber(this._state);
         }
     }
@@ -130,6 +146,15 @@ export const addPostActionCreator = (text) => ({
 
 export const updateNewPostTextActionCreator = (newPost) => ({
         type:UPDATE_NEW_POST_TEXT, text:newPost
+})
+
+
+export const addNewMessagesActionCreator = () => ({
+    type:SEND_MESSAGES
+})
+
+export const newMessages = (newText) => ({
+    type:UPDATE_NEW_MESSAGES, body: newText
 })
 
 
