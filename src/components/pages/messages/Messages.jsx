@@ -7,7 +7,7 @@ const Messages = (props) => {
     return (
         <div className={s.bg__messages}>
             <Dialogs state={props.state.dialogs}/>
-           <Conservation dispatch={props.dispatch} state={props.state}  />
+            <Conservation dispatch={props.dispatch} state={props.state}  />
         </div>
     );
 };

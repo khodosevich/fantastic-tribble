@@ -9,6 +9,7 @@ import Music from "./components/pages/music/Music";
 import News from "./components/pages/news/News";
 
 function App(props) {
+
   return (
           <div className="main__container">
                 <div className="App">
@@ -16,8 +17,8 @@ function App(props) {
                         <Header/>
                         <Nav state={props.state} />
                             <Routes>
-                                 <Route path="/" element={ <Profile state={props.state.profilePage} dispatch={props.dispatch} />} />
-                                 <Route path="/messages/*" element={<Messages state={props.state.dialogsPage} dispatch={props.dispatch}/>} />
+                                 <Route path="/" element={ <Profile state={props.state.profileReducer.profilePage} dispatch={props.dispatch} />} />
+                                 <Route path="/messages/*" element={<Messages state={props.state.dialogsReducer.dialogsPage} dispatch={props.dispatch}/>} />
                                 <Route path="/news" element={<News />} />
                                 <Route path="/music" element={<Music />} />
                                 <Route path="/setting" element={<Settings />} />

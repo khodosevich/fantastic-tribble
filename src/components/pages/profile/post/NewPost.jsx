@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from "../../../../styles/content/Content.module.css";
 import {Button} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../redux/profileReducer";
 
 
 

@@ -3,6 +3,8 @@ import s from "../../styles/nav/Nav.module.css"
 import {Link, NavLink} from "react-router-dom";
 import menuItems from "./links.json"
 
+import friendSide from "./friends.json"
+
 const Nav = (props) => {
     const [activeLink, setActiveLink] = useState(0);
 
@@ -17,7 +19,7 @@ const Nav = (props) => {
             </ul>
             <h3 className={s.title__friends}>My friends:</h3>
             <div className={s.friends}>
-                {props.state.sideBar.friends.map((x) => (
+                {friendSide.map((x) => (
                         <div className={s.cards_items}>
                             <div className={s.card_item}>
                                 <img className={s.photo_friend} src={x.photo} alt=""/>

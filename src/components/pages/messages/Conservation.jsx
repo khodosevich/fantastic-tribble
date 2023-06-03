@@ -1,21 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from "../../../styles/messages/Messages.module.css";
 import Message from "./Message";
 import classes from "../../../styles/content/Content.module.css";
-import {Box, Button} from "@mui/material";
+import {Button} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import {addNewMessagesActionCreator, newMessages} from "../../../redux/state";
+import {addNewMessagesActionCreator, newMessages} from "../../../redux/dialogsReducer";
 
 const Conservation = (props) => {
 
-    let currentValueMessages = props.state.newMessagesBody;
+    const [currentValueMessages, setCurrentValueMessages] = useState('');
 
     let addNewMessage = () =>{
         props.dispatch(addNewMessagesActionCreator());
+        setCurrentValueMessages("");
     }
 
     let sendRequestOnNewMessages = (e) => {
         let body = e.target.value;
+        setCurrentValueMessages(e.target.value);
         props.dispatch(newMessages(body));
     }
 
