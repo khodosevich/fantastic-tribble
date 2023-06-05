@@ -1,20 +1,37 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Avatar, Box, Button} from "@mui/material";
-import friends from "./friends.json"
+import {followActionCreator, setUsersActionCreator, unFollowActionCreator} from "../../../redux/findFriendsReducer";
 
-const FindFriends = () => {
+const FindFriends = (props) => {
 
-    const [follow,setFollow] = useState(false);
 
-    let changeFollow = () => {
-
+    let changeFollow = (userID) => {
+        props.dispatch(unFollowActionCreator(userID));
     }
+
+    let changeUnFollow = (userID) => {
+        props.dispatch(followActionCreator(userID));
+    }
+
+    let setUsers = (users) => {
+        props.dispatch(setUsersActionCreator(users));
+    }
+
 
     return (
         <Box sx={{
             backgroundColor:"white"
         }}>
-            FindFriends
+
+            <Box sx={{
+                display:"flex",
+                justifyContent:"center",
+                margin:"30px 0",
+                fontWeight:"600",
+                fontSize:"25px"
+            }}>
+                Find friends:
+            </Box>
 
            <Box sx={{
                display:"flex",
@@ -23,9 +40,9 @@ const FindFriends = () => {
                alignItems:"center"
            }}>
                 {
-                  friends.map((user) => (
+                  props.state.users.map((user) => (
 
-                      <Box sx={{
+                      <Box key={user.id} sx={{
                           width:"500px",
                           background:"black",
                           padding:"20px",
@@ -37,13 +54,12 @@ const FindFriends = () => {
                               justifyContent:"space-between"
                           }}>
                               <Avatar alt={user.name} src={user.img} />
-                              <Button
-                                  onClick={() => setFollow(!follow)}
-                                  variant="contained">
-                                  {
-                                      user.followed  ? "Follow" : "Unfollow"
+                              <Box>
+                                  {user.followed
+                                      ? <Button variant="contained" onClick={ () => {changeFollow(user.id)}}>Unfollow</Button>
+                                      : <Button variant="contained" onClick={ () => {changeUnFollow(user.id)}}>Follow</Button>
                                   }
-                              </Button>
+                              </Box>
                           </Box>
                           <Box>
                               {user.name}
@@ -75,10 +91,9 @@ const FindFriends = () => {
                     Show more
                 </Button>
             </Box>
-
-
-
         </Box>
+
+
     );
 };
 

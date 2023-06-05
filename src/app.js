@@ -10,7 +10,6 @@ import News from "./components/pages/news/News";
 import FindFriends from "./components/pages/findFriends/FindFriends";
 
 function App(props) {
-
   return (
           <div className="main__container">
                 <div className="App">
@@ -23,7 +22,7 @@ function App(props) {
                                 <Route path="/news" element={<News />} />
                                 <Route path="/music" element={<Music />} />
                                 <Route path="/setting" element={<Settings />} />
-                                <Route path="/findfriends" element={<FindFriends />} />
+                                <Route path="/findfriends" element={<FindFriends state={props.state.findFriendReducer} dispatch={props.dispatch}/>} />
                             </Routes>
                     </div>
                 </div>
