@@ -1,9 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Avatar, Box, Button} from "@mui/material";
 import {followActionCreator, setUsersActionCreator, unFollowActionCreator} from "../../../redux/findFriendsReducer";
+import axios from "axios";
+
+import userPhoto from "../../../assets/img/149071.png"
 
 const FindFriends = (props) => {
 
+
+    if(props.state.users.length === 0) {
+
+        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+            .then(response => {
+
+                props.dispatch(setUsersActionCreator(response.data.items));
+            })
+
+    }
 
     let changeFollow = (userID) => {
         props.dispatch(unFollowActionCreator(userID));
@@ -13,9 +26,6 @@ const FindFriends = (props) => {
         props.dispatch(followActionCreator(userID));
     }
 
-    let setUsers = (users) => {
-        props.dispatch(setUsersActionCreator(users));
-    }
 
 
     return (
@@ -53,7 +63,7 @@ const FindFriends = (props) => {
                               display:"flex",
                               justifyContent:"space-between"
                           }}>
-                              <Avatar alt={user.name} src={user.img} />
+                              <Avatar alt={user.name} src={user.photos.small != null ? user.photos.small : userPhoto } />
                               <Box>
                                   {user.followed
                                       ? <Button variant="contained" onClick={ () => {changeFollow(user.id)}}>Unfollow</Button>
@@ -74,7 +84,7 @@ const FindFriends = (props) => {
                                 {user.status}
                             </Box>
                               <Box>
-                                  {user.country}
+                                  {/*{user.country}*/}
                               </Box>
                           </Box>
                       </Box>
