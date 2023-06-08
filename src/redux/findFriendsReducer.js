@@ -1,45 +1,9 @@
-
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 
 let init = {
-
         users:[]
-            // {
-            //     "id": "1",
-            //     "name": "Matvey",
-            //     "status": "Chelsea is champion",
-            //     "country": "Belarus, Plisa",
-            //     "img": "https://audimediacenter-a.akamaihd.net/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_full.jpg?1581961854",
-            //     "followed": true
-            // },
-            // {
-            //     "id": "2",
-            //     "name": "Stas",
-            //     "status": "Chelsea is champion",
-            //     "country": "Belarus, Minsk",
-            //     "img": "https://audimediacenter-a.akamaihd.net/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_full.jpg?1581961854",
-            //     "followed": false
-            //
-            // },
-            // {
-            //     "id": "3",
-            //     "name": "Ivan",
-            //     "status": "Chelsea is champion",
-            //     "country": "Belarus, Smolevichi",
-            //     "img": "https://audimediacenter-a.akamaihd.net/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_full.jpg?1581961854",
-            //     "followed": false
-            // },
-            // {
-            //     "id": "4",
-            //     "name": "Maksim",
-            //     "status": "Chelsea is champion",
-            //     "country": "Belarus, Borisov",
-            //     "img": "https://audimediacenter-a.akamaihd.net/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_full.jpg?1581961854",
-            //     "followed": true
-            // }
-
 }
 
 const findFriendReducer = (state = init, action) => {

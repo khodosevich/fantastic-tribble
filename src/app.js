@@ -7,7 +7,7 @@ import { Route, Routes} from "react-router-dom";
 import Settings from "./components/pages/setting/Settings";
 import Music from "./components/pages/music/Music";
 import News from "./components/pages/news/News";
-import FindFriends from "./components/pages/findFriends/FindFriends";
+import FindFriendsC from "./components/pages/findFriends/FindFriendsC";
 
 function App(props) {
   return (
@@ -22,7 +22,7 @@ function App(props) {
                                 <Route path="/news" element={<News />} />
                                 <Route path="/music" element={<Music />} />
                                 <Route path="/setting" element={<Settings />} />
-                                <Route path="/findfriends" element={<FindFriends state={props.state.findFriendReducer} dispatch={props.dispatch}/>} />
+                                <Route path="/findfriends" element={<FindFriendsC state={props.state.findFriendReducer} dispatch={props.dispatch}/>} />
                             </Routes>
                     </div>
                 </div>
