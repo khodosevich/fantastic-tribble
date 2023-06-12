@@ -18,7 +18,7 @@ const Profile = (props) => {
                     <div className={classes.old__posts}>
                         {
                             props.state.posts.map( (x) => (
-                            <Post text={x.text} like={x.likes} id={x.id} />
+                            <Post key={x.id} text={x.text} like={x.likes} id={x.id} />
                             ))
                         }
                     </div>

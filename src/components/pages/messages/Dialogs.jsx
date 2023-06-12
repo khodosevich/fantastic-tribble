@@ -9,7 +9,7 @@ const Dialogs = (props) => {
             <div className={s.dialogs__item}>
                 <div className="dialogs">
                     {props.state.map((user) => (
-                        <div className={s.card_item}>
+                        <div key={user.id} className={s.card_item}>
                             <div >
                                 <Avatar
                                     sx={{

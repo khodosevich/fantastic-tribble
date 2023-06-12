@@ -1,22 +1,26 @@
 import React from 'react';
 import {Avatar, Box, Button} from "@mui/material";
-import {followActionCreator, setUsersActionCreator, unFollowActionCreator} from "../../../redux/findFriendsReducer";
+import {
+    followActionCreator,
+    setCurrentPageActionCreator,
+    setUsersActionCreator,
+    unFollowActionCreator
+} from "../../../redux/findFriendsReducer";
 import axios from "axios";
 
 import userPhoto from "../../../assets/img/149071.png"
 
+import "./finfFriend.css"
 
 class FindFriends extends React.Component {
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
-
+                // console.log(response)
                 this.props.dispatch(setUsersActionCreator(response.data.items));
             })
     }
-
-
 
     changeFollow = (userID) => {
         this.props.dispatch(unFollowActionCreator(userID));
@@ -26,12 +30,40 @@ class FindFriends extends React.Component {
         this.props.dispatch(followActionCreator(userID));
     }
 
+    changePage = (p) => {
+        this.props.dispatch(setCurrentPageActionCreator(p))
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.pageSize}`)
+            .then(response => {
+                // console.log(response)
+                this.props.dispatch(setUsersActionCreator(response.data.items));
+            })
+    }
 
     render() {
-        return( <Box sx={{
+
+        let pagesCount = Math.ceil(this.props.state.totalCount / this.props.state.pageSize);
+
+        let pages = [];
+
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
+        return(<Box sx={{
                 backgroundColor:"#7f7da8",
 
             }}>
+
+                <div >
+                    {pages.map(p => {
+                        return <span
+                            className={this.props.currentPage === p ? "active" : "page"}
+                            // style={{cursor:"pointer"}}
+                            onClick={() => {this.changePage(p)} } > {p} </span>
+                    })}
+                </div>
+
+
 
                 <Box sx={{
                     display:"flex",
@@ -98,9 +130,7 @@ class FindFriends extends React.Component {
                     justifyContent:"center",
                     margin:"20px"
                 }}>
-                    <Button  onClick={this.getUsers} variant="contained" color="success">
-                        Show more
-                    </Button>
+
                 </Box>
             </Box>
         );

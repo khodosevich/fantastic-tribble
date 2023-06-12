@@ -24,7 +24,7 @@ const Conservation = (props) => {
     return (
         <div className={s.messages}>
             {props.state.messages.map((user) => (
-                <Message id={user.id} text={user.text}/>
+                <Message key={user.id} id={user.id} text={user.text}/>
             ))}
             <div
                 style={{
