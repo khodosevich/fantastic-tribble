@@ -7,7 +7,7 @@ const SET_CURRENTPAGE = "SET_CURRENTPAGE";
 let init = {
     users:[],
     pageSize: 5,
-    totalCount:200,
+    totalCount:200,//setTotalCount
     currentPage:1
 }
 

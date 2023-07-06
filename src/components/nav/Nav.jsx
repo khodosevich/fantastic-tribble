@@ -5,7 +5,7 @@ import menuItems from "./links.json"
 
 import friendSide from "./friends.json"
 
-const Nav = (props) => {
+const Nav = () => {
     const [activeLink, setActiveLink] = useState(0);
 
     return (
@@ -20,7 +20,7 @@ const Nav = (props) => {
             <h3 className={s.title__friends}>My friends:</h3>
             <div className={s.friends}>
                 {friendSide.map((x) => (
-                        <div key={x.id} className={s.cards_items}>
+                        <div key={x.id} >
                             <div className={s.card_item}>
                                 <img className={s.photo_friend} src={x.photo} alt=""/>
                                 <li>
