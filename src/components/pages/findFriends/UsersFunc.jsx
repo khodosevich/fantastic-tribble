@@ -2,6 +2,7 @@ import React from 'react';
 import {Avatar, Box, Button} from "@mui/material";
 import x from "./findFriend.module.css";
 import userPhoto from "../../../assets/img/149071.png";
+import {NavLink} from "react-router-dom";
 
 
 const UsersFunc = (props) => {
@@ -65,7 +66,9 @@ const UsersFunc = (props) => {
                                 justifyContent:"space-between"
                             }}>
 
-                                <Avatar alt={user.name} src={user.photos.small != null ? user.photos.small : userPhoto } />
+                                <NavLink to={'/profile/' + user.id} >
+                                      <Avatar alt={user.name} src={user.photos.small != null ? user.photos.small : userPhoto } />
+                                </NavLink>
 
                                 <Box>
                                     {user.followed
@@ -98,7 +101,6 @@ const UsersFunc = (props) => {
                     ))
                 }
             </Box>
-
         </Box>
     );
 };

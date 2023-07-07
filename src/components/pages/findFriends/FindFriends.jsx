@@ -12,9 +12,7 @@ import Preloader from "../../common/preloader/Preloader";
 
 class FindFriends extends React.Component {
     componentDidMount() {
-
         this.props.dispatch(setIsLoading(true))
-
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}&count=${this.props.state.pageSize}`)
             .then(response => {
                 this.props.dispatch(setIsLoading(false))
@@ -55,13 +53,9 @@ class FindFriends extends React.Component {
                              isLoading={this.props.state.isLoading}
                 />
             }
-
         </>
-
-
         );
     }
 }
-
 
 export default FindFriends;

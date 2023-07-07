@@ -1,8 +1,9 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let init = {
-    profilePage:{
+    profilePage: {
         posts: [
             {
                 "text":"hello, my name is Matvey",
@@ -35,26 +36,52 @@ let init = {
                 "id":"5"
             }
         ],
-        newPostText:{}
+        newPostText:"",
+        profile: null
     }
 }
 
- const profileReducer = (state = init, action) => {
-
-    if(action.type === ADD_POST){
-        let newPost ={
+const profileReducer = (state = init, action) => {
+    if (action.type === ADD_POST) {
+        const newPost = {
             text: action.text,
-            likes:"0",
-            id:"7"
+            likes: "0",
+            id: "7"
         };
-        state.profilePage.posts.push(newPost);
-    }else if(action.type === UPDATE_NEW_POST_TEXT){
-        state.newPostText = action.body;
+        const updatedPosts = [...state.profilePage.posts, newPost];
+        return {
+            ...state,
+            profilePage: {
+                ...state.profilePage,
+                posts: updatedPosts
+            }
+        };
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
+        return {
+            ...state,
+            profilePage: {
+                ...state.profilePage,
+                newPostText: action.body
+            }
+        };
+    } else if (action.type === SET_USER_PROFILE) {
+        return {
+            ...state,
+            profilePage: {
+                ...state.profilePage,
+                profile: action.profile
+            }
+        };
     }
 
     return state;
-}
+};
 
+
+export const setUserProfile = (profile) => ({
+    type:SET_USER_PROFILE,
+    profile
+})
 
 export const addPostActionCreator = (text) => ({
     type:ADD_POST,

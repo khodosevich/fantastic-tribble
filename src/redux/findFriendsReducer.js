@@ -33,7 +33,6 @@ const findFriendReducer = (state = init, action) => {
     } else if (action.type === SET_CURRENTPAGE) {
         return { ...state, currentPage: action.currentPage };
     } else if (action.type === SET_ISLOADIND) {
-        console.log(action.isLoading.toString())
         return { ...state, isLoading: action.isLoading };
     } else {
         return state;

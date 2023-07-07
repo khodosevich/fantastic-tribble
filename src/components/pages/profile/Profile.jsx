@@ -1,29 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from "../../../styles/content/Content.module.css"
 import Post from "./post/Post";
 import UserInfo from "./user/UserInfo";
 import NewPost from "./post/NewPost";
 import UserBg from "./user/UserBg";
+import {Box} from "@mui/material";
 
 const Profile = (props) => {
 
+
     return (
-        <div className={classes.content}>
+        <Box className={classes.content}>
                <UserBg/>
-                <div >
-                    <UserInfo />
-                    <div className={classes.new__posts}>
+                <Box >
+                    <UserInfo profile={props.profile} />
+                    <Box className={classes.new__posts}>
                       <NewPost posts={props.state.posts} dispatch={props.dispatch} />
-                    </div>
-                    <div className={classes.old__posts}>
+                    </Box>
+                    <Box className={classes.old__posts}>
                         {
                             props.state.posts.map( (x) => (
                             <Post key={x.id} text={x.text} like={x.likes} id={x.id} />
                             ))
                         }
-                    </div>
-            </div>
-        </div>
+                    </Box>
+            </Box>
+        </Box>
     );
 };
 

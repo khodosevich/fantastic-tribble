@@ -1,18 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import classes from "../../../../styles/content/user/User.module.css";
+import Preloader from "../../../common/preloader/Preloader";
+import {Box , Typography} from "@mui/material";
 
-const UserInfo = () => {
-    return (
-        <div className={classes.user__info} >
-            <div >
-                <img className={classes.img__photo__user} src="https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg" alt=""/>
-            </div>
-            <div >
-                <h3 className={classes.name__user}>Matvey Khodosevich</h3>
-                <p className={classes.desc__name__user} >I am champion! </p>
-            </div>
+const UserInfo = (props) => {
 
-        </div>
+    return (<>
+            {props.profile === null ? <Preloader/>
+                : <Box className={classes.user__info}>
+                    <Box>
+                        <img className={classes.img__photo__user} src={props.profile.photos.large} alt="ava"/>
+                    </Box>
+                    <Box>
+                        <Typography variant="h4" className={classes.name__user}>{props.profile.fullName}</Typography>
+                        <p className={classes.desc__name__user}>{props.profile.aboutMe}</p>
+                        <Typography variant="h6">{props.profile.lookingForAJobDescription}</Typography>
+                    </Box>
+                </Box>
+            }
+    </>
     );
 };
 
