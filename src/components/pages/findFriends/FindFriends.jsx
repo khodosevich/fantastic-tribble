@@ -13,7 +13,8 @@ import Preloader from "../../common/preloader/Preloader";
 class FindFriends extends React.Component {
     componentDidMount() {
         this.props.dispatch(setIsLoading(true))
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}&count=${this.props.state.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}&count=${this.props.state.pageSize}`,
+            {withCredentials:true})
             .then(response => {
                 this.props.dispatch(setIsLoading(false))
                 this.props.dispatch(setUsersActionCreator(response.data.items));
@@ -22,17 +23,19 @@ class FindFriends extends React.Component {
     }
 
     changeFollow = (userID) => {
-        this.props.dispatch(unFollowActionCreator(userID));
+        this.props.dispatch(followActionCreator(userID));
     }
 
      changeUnFollow = (userID) => {
-         this.props.dispatch(followActionCreator(userID));
+         this.props.dispatch(unFollowActionCreator(userID));
     }
 
     changePage = (p) => {
         this.props.dispatch(setCurrentPageActionCreator(p))
         this.props.dispatch(setIsLoading(true))
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.state.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.state.pageSize}`,
+            {withCredentials:true}
+            )
             .then(response => {
                 this.props.dispatch(setIsLoading(false))
                 this.props.dispatch(setUsersActionCreator(response.data.items));
