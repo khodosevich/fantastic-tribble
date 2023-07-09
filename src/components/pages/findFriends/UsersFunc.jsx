@@ -19,6 +19,7 @@ const UsersFunc = (props) => {
     return (
         <Box sx={{
             backgroundColor:"#7f7da8",
+            paddingBottom:"100px"
         }}>
 
             <Box sx={{display:"flex",  justifyContent:"center", gap:"5px"}}>
