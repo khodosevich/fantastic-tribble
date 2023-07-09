@@ -1,16 +1,24 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from "../../styles/header/Header.module.css"
 import "../../styles/header/Header.module.css"
+import { Box } from "@mui/material";
+import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+
+    console.log(props.userInfo)
 
     return (
-        <div className={s.headerBar}>
+        <Box className={s.headerBar}>
             <p className={s.headerLogo}>khodosevich</p>
-            <div className={s.login}>
-                log out
-            </div>
-        </div>
+            <Box sx={{color:"white" , marginRight: "20px"}}>
+                {
+                    props.isAuth
+                        ? props.userInfo.fullName
+                        : <NavLink to='/login'>Login</NavLink>
+                }
+            </Box>
+        </Box>
     );
 };
 

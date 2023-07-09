@@ -11,13 +11,12 @@ class ProfileContainer extends React.Component{
         let profileId = this.props.router.params['*'];
 
         if(!profileId){
-            profileId = 2;
+            profileId = 1079;
         }
 
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${profileId}`)
                 .then(response => {
                     this.props.dispatch(setUserProfile(response.data));
-                    console.log(this.props.state.profile)
         })
     }
 
