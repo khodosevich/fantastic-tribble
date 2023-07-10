@@ -3,20 +3,20 @@ import Header from "./Header";
 import axios from "axios";
 import {connect} from "react-redux";
 import {setAuthUserData} from "../../redux/authReducer";
-import {setUserProfile} from "../../redux/profileReducer";
+import {authMe, getUserById} from "../../api/methods";
 
 class HeaderContainer extends React.Component{
 
-    async componentDidMount() {
+     async componentDidMount() {
         try {
-            const response = await axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", {
-                withCredentials: true
-            });
+            const response = await authMe().then(r => r);
 
-            const { id, login, email } = response.data.data;
-            if (response.data.resultCode === 0) {
-                const profileResponse = await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${id}`);
-                this.props.setAuthUserData(id, email, login, profileResponse.data);
+            const { id, login, email } = response.data;
+
+            if (response.resultCode === 0) {
+                const profileResponse = await getUserById(id);
+                console.log("pr: " , profileResponse)
+                this.props.setAuthUserData(id, email, login, profileResponse);
             }
         } catch (error) {
             console.error(error);

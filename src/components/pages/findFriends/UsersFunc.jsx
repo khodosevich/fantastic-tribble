@@ -4,6 +4,7 @@ import x from "./findFriend.module.css";
 import userPhoto from "../../../assets/img/149071.png";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
+import {follow, unFollow} from "../../../api/methods";
 
 
 const UsersFunc = (props) => {
@@ -76,38 +77,20 @@ const UsersFunc = (props) => {
                                     {user.followed
                                         ? <Button variant="contained" onClick={ () =>
                                         {
-                                            axios
-                                                .delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                                                    {
-                                                        withCredentials: true,
-                                                        headers: {
-                                                            "API-KEY": "0324ee1c-77a4-42ba-b072-51841a95f51c"
-                                                        }
-                                                    }).then(response => {
-                                                if(response.data.resultCode === 0) {
-                                                    props.changeUnFollow(user.id)
-                                                }
-                                            })
-
-
+                                            unFollow(user.id)
+                                                .then(response => {
+                                                    if(response.resultCode === 0) {
+                                                        props.changeUnFollow(user.id)
+                                                    }})
                                         }
                                         }>Unfollow</Button>
                                         : <Button variant="contained" onClick={ () =>
                                         {
 
-                                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}` ,
-                                                {} ,
-                                                {withCredentials: true,
-                                                    headers:{
-                                                        "API-KEY": "0324ee1c-77a4-42ba-b072-51841a95f51c"
-                                                    }}
-                                            )
-                                                .then(response => {
-                                                    if(response.data.resultCode === 0) {
-                                                        props.changeFollow(user.id)
-                                                    }
-                                                })
-
+                                            follow(user.id).then(response => {
+                                                if(response.resultCode === 0) {
+                                                    props.changeFollow(user.id)
+                                                }})
                                         }
                                         }>Follow</Button>
                                     }
@@ -126,10 +109,6 @@ const UsersFunc = (props) => {
                             }}>
                                 <Box>
                                     {user.status}
-                                </Box>
-
-                                <Box>
-                                    Belarus
                                 </Box>
 
                             </Box>

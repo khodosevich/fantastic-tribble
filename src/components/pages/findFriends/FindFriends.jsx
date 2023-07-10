@@ -5,21 +5,19 @@ import {
     setUsersActionCreator,
     unFollowActionCreator
 } from "../../../redux/findFriendsReducer";
-import axios from "axios";
 
 import UsersFunc from "./UsersFunc";
 import Preloader from "../../common/preloader/Preloader";
+import {getUsers} from "../../../api/methods";
 
 class FindFriends extends React.Component {
     componentDidMount() {
         this.props.dispatch(setIsLoading(true))
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.state.currentPage}&count=${this.props.state.pageSize}`,
-            {withCredentials:true})
-            .then(response => {
-                this.props.dispatch(setIsLoading(false))
-                this.props.dispatch(setUsersActionCreator(response.data.items));
-            })
 
+        getUsers(this.props.state.currentPage, this.props.state.pageSize ).then(r => {
+            this.props.dispatch(setIsLoading(false))
+            this.props.dispatch(setUsersActionCreator(r.items));
+        } )
     }
 
     changeFollow = (userID) => {
@@ -33,12 +31,11 @@ class FindFriends extends React.Component {
     changePage = (p) => {
         this.props.dispatch(setCurrentPageActionCreator(p))
         this.props.dispatch(setIsLoading(true))
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${p}&count=${this.props.state.pageSize}`,
-            {withCredentials:true}
-            )
+
+        getUsers(p,this.props.state.pageSize)
             .then(response => {
                 this.props.dispatch(setIsLoading(false))
-                this.props.dispatch(setUsersActionCreator(response.data.items));
+                this.props.dispatch(setUsersActionCreator(response.items));
             })
     }
 

@@ -1,13 +1,13 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
-const SET_CURRENTPAGE = "SET_CURRENTPAGE";
-const SET_ISLOADIND = "SET_ISLOADIND";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_IS_LOADING = "SET_IS_LOADING";
 
 let init = {
     users:[],
-    pageSize: 5,
-    totalCount:200,//setTotalCount
+    pageSize: 10,
+    totalCount:100,//setTotalCount
     currentPage:1,
     isLoading: false
 }
@@ -30,9 +30,9 @@ const findFriendReducer = (state = init, action) => {
         };
     } else if (action.type === SET_USERS) {
         return { ...state, users: action.users };
-    } else if (action.type === SET_CURRENTPAGE) {
+    } else if (action.type === SET_CURRENT_PAGE) {
         return { ...state, currentPage: action.currentPage };
-    } else if (action.type === SET_ISLOADIND) {
+    } else if (action.type === SET_IS_LOADING) {
         return { ...state, isLoading: action.isLoading };
     } else {
         return state;
@@ -43,8 +43,8 @@ const findFriendReducer = (state = init, action) => {
 export const followActionCreator = (userID) => ({type:FOLLOW, userID:userID})
 export const unFollowActionCreator = (userID) => ({type:UNFOLLOW, userID:userID})
 export const setUsersActionCreator = (users) => ({type:SET_USERS, users})
-export const setCurrentPageActionCreator = (currentPage) => ({type:SET_CURRENTPAGE, currentPage})
-export const setIsLoading = (isLoading) => ({type:SET_ISLOADIND, isLoading})
+export const setCurrentPageActionCreator = (currentPage) => ({type:SET_CURRENT_PAGE, currentPage})
+export const setIsLoading = (isLoading) => ({type:SET_IS_LOADING, isLoading})
 
 
 export default findFriendReducer;
