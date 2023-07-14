@@ -3,9 +3,7 @@ import {Avatar, Box, Button} from "@mui/material";
 import x from "./findFriend.module.css";
 import userPhoto from "../../../assets/img/149071.png";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 import {follow, unFollow} from "../../../api/methods";
-
 
 const UsersFunc = (props) => {
 
@@ -75,22 +73,28 @@ const UsersFunc = (props) => {
 
                                 <Box>
                                     {user.followed
-                                        ? <Button variant="contained" onClick={ () =>
+                                        ? <Button disabled={props.followingInProgress.some(id => id === user.id)} variant="contained" onClick={ () =>
                                         {
+                                            props.toggleFollowingInProgress(true, user.id)
                                             unFollow(user.id)
                                                 .then(response => {
                                                     if(response.resultCode === 0) {
                                                         props.changeUnFollow(user.id)
+                                                        props.toggleFollowingInProgress(false , user.id)
                                                     }})
+
                                         }
                                         }>Unfollow</Button>
-                                        : <Button variant="contained" onClick={ () =>
+                                        : <Button disabled={props.followingInProgress.some(id => id === user.id)} variant="contained" onClick={ () =>
                                         {
+                                            props.toggleFollowingInProgress(true , user.id)
 
                                             follow(user.id).then(response => {
                                                 if(response.resultCode === 0) {
                                                     props.changeFollow(user.id)
+                                                    props.toggleFollowingInProgress(false , user.id)
                                                 }})
+
                                         }
                                         }>Follow</Button>
                                     }

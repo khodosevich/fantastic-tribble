@@ -11,7 +11,6 @@ let instance = axios.create({
 
 export const getUsers = async (currentPage = 1 , pageSize = 10) => {
    return await instance.get(  `users?page=${currentPage}&count=${pageSize}`).then(r => r.data)
-
 }
 
 export const unFollow = async (userId) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import {
     followActionCreator,
     setCurrentPageActionCreator, setIsLoading,
-    setUsersActionCreator,
+    setUsersActionCreator, toggleInFollowingProgress,
     unFollowActionCreator
 } from "../../../redux/findFriendsReducer";
 
@@ -39,6 +39,10 @@ class FindFriends extends React.Component {
             })
     }
 
+    toggleFollowingInProgress = (isFetching,userId) => {
+        this.props.dispatch(toggleInFollowingProgress(isFetching,userId));
+    }
+
     render() {
         return(<>
             {this.props.state.isLoading
@@ -51,11 +55,14 @@ class FindFriends extends React.Component {
                              changeUnFollow={this.changeUnFollow}
                              changePage={this.changePage}
                              isLoading={this.props.state.isLoading}
+                             followingInProgress={this.props.state.followingInProgress}
+                             toggleFollowingInProgress={this.toggleFollowingInProgress}
                 />
             }
         </>
         );
     }
 }
+
 
 export default FindFriends;

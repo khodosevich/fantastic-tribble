@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from "./Header";
-import axios from "axios";
 import {connect} from "react-redux";
 import {setAuthUserData} from "../../redux/authReducer";
 import {authMe, getUserById} from "../../api/methods";
@@ -15,7 +14,6 @@ class HeaderContainer extends React.Component{
 
             if (response.resultCode === 0) {
                 const profileResponse = await getUserById(id);
-                console.log("pr: " , profileResponse)
                 this.props.setAuthUserData(id, email, login, profileResponse);
             }
         } catch (error) {

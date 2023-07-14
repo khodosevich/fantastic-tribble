@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import classes from "../../../styles/content/Content.module.css"
 import Post from "./post/Post";
 import UserInfo from "./user/UserInfo";

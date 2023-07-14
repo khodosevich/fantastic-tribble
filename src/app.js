@@ -1,6 +1,5 @@
 import "./app.css"
 import Nav from "./components/nav/Nav";
-import Header from "./components/header/Header";
 import Messages from "./components/pages/messages/Messages";
 import { Route, Routes} from "react-router-dom";
 import Settings from "./components/pages/setting/Settings";

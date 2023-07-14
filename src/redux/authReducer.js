@@ -1,5 +1,3 @@
-import userInfo from "../components/pages/profile/user/UserInfo";
-
 const SET_USER_DATA = "SET_USER_DATA";
 
 let init = {
@@ -27,7 +25,6 @@ const authReducer = (state = init, action) => {
 }
 
 export const setAuthUserData = (userId,email,login, currentUser) => ({type:SET_USER_DATA, data: {userId,email,login} , currentUser})
-// export const setIsLoading = (isLoading) => ({type:SET_ISLOADIND, isLoading})
 
 
 export default authReducer;
