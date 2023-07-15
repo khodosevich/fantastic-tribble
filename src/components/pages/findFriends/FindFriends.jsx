@@ -9,38 +9,39 @@ import {
 import UsersFunc from "./UsersFunc";
 import Preloader from "../../common/preloader/Preloader";
 import {getUsers} from "../../../api/methods";
+import {connect} from "react-redux";
 
 class FindFriends extends React.Component {
     componentDidMount() {
-        this.props.dispatch(setIsLoading(true))
+        this.props.setIsLoading(true)
 
         getUsers(this.props.state.currentPage, this.props.state.pageSize ).then(r => {
-            this.props.dispatch(setIsLoading(false))
-            this.props.dispatch(setUsersActionCreator(r.items));
+            this.props.setIsLoading(false)
+            this.props.setUsersActionCreator(r.items);
         } )
     }
 
     changeFollow = (userID) => {
-        this.props.dispatch(followActionCreator(userID));
+        this.props.followActionCreator(userID);
     }
 
      changeUnFollow = (userID) => {
-         this.props.dispatch(unFollowActionCreator(userID));
+         this.props.unFollowActionCreator(userID);
     }
 
     changePage = (p) => {
-        this.props.dispatch(setCurrentPageActionCreator(p))
-        this.props.dispatch(setIsLoading(true))
+        this.props.setCurrentPageActionCreator(p)
+        this.props.setIsLoading(true)
 
         getUsers(p,this.props.state.pageSize)
             .then(response => {
-                this.props.dispatch(setIsLoading(false))
-                this.props.dispatch(setUsersActionCreator(response.items));
+                this.props.setIsLoading(false)
+                this.props.setUsersActionCreator(response.items);
             })
     }
 
     toggleFollowingInProgress = (isFetching,userId) => {
-        this.props.dispatch(toggleInFollowingProgress(isFetching,userId));
+        this.props.toggleInFollowingProgress(isFetching,userId);
     }
 
     render() {
@@ -65,4 +66,21 @@ class FindFriends extends React.Component {
 }
 
 
-export default FindFriends;
+let mapStateToProps = (state) => ({
+    users: state.users,
+    currentPage: state.currentPage,
+    totalCount:state.totalCount,
+    pageSize: state.pageSize,
+    isLoading: state.isLoading,
+    followingInProgress: state.followingInProgress
+})
+
+
+export default connect(mapStateToProps,
+    {setIsLoading,
+                      setUsersActionCreator,
+                      followActionCreator,
+                      toggleInFollowingProgress,
+                      unFollowActionCreator,
+                      setCurrentPageActionCreator
+    }) (FindFriends);

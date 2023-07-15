@@ -7,8 +7,8 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
 
 let init = {
     users:[],
-    pageSize: 10,
-    totalCount:100,//setTotalCount
+    pageSize: 100,
+    totalCount:1000,//setTotalCount
     currentPage:1,
     isLoading: false,
     followingInProgress: [],
