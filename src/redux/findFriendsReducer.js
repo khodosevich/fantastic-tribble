@@ -1,3 +1,5 @@
+import {follow, getUsers, unFollow} from "../api/methods";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -58,5 +60,57 @@ export const setUsersActionCreator = (users) => ({type:SET_USERS, users})
 export const setCurrentPageActionCreator = (currentPage) => ({type:SET_CURRENT_PAGE, currentPage})
 export const setIsLoading = (isLoading) => ({type:SET_IS_LOADING, isLoading})
 export const toggleInFollowingProgress = (isFetching,userId) => ({type:TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId  })
+
+export const getUsersThunkCreator = (currentPage , pageSize) => {
+    return (dispatch) => {
+        dispatch(setIsLoading(true))
+
+        getUsers(currentPage, pageSize ).then(r => {
+            dispatch(setIsLoading(false));
+            dispatch(setUsersActionCreator(r.items));
+        });
+}}
+
+export const changePageThunk = (p,pageSize) => {
+    return (dispatch) => {
+        dispatch(setCurrentPageActionCreator(p))
+        dispatch(setIsLoading(true))
+
+        getUsers(p,pageSize)
+            .then(response => {
+                dispatch(setIsLoading(false));
+                dispatch(setUsersActionCreator(response.items));
+            })
+    }
+}
+
+
+export const unfollowThunk = (userId) => {
+    return (dispatch) => {
+
+        dispatch(toggleInFollowingProgress(true, userId))
+        unFollow(userId)
+            .then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(unFollowActionCreator(userId));
+                    dispatch(toggleInFollowingProgress(false, userId))
+                }
+            })
+    }
+}
+
+export const followThunk = (userId) => {
+    return (dispatch) => {
+
+        dispatch(toggleInFollowingProgress(true ,userId))
+
+        follow(userId).then(response => {
+            if(response.resultCode === 0) {
+                dispatch(followActionCreator(userId));
+                dispatch(toggleInFollowingProgress(false , userId));
+            }})
+    }
+}
+
 
 export default findFriendReducer;

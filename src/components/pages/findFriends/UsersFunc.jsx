@@ -3,7 +3,6 @@ import {Avatar, Box, Button} from "@mui/material";
 import x from "./findFriend.module.css";
 import userPhoto from "../../../assets/img/149071.png";
 import {NavLink} from "react-router-dom";
-import {follow, unFollow} from "../../../api/methods";
 
 const UsersFunc = (props) => {
 
@@ -75,26 +74,12 @@ const UsersFunc = (props) => {
                                     {user.followed
                                         ? <Button disabled={props.followingInProgress.some(id => id === user.id)} variant="contained" onClick={ () =>
                                         {
-                                            props.toggleFollowingInProgress(true, user.id)
-                                            unFollow(user.id)
-                                                .then(response => {
-                                                    if(response.resultCode === 0) {
-                                                        props.changeUnFollow(user.id)
-                                                        props.toggleFollowingInProgress(false , user.id)
-                                                    }})
-
+                                            props.unfollowThunk(user.id);
                                         }
                                         }>Unfollow</Button>
                                         : <Button disabled={props.followingInProgress.some(id => id === user.id)} variant="contained" onClick={ () =>
                                         {
-                                            props.toggleFollowingInProgress(true , user.id)
-
-                                            follow(user.id).then(response => {
-                                                if(response.resultCode === 0) {
-                                                    props.changeFollow(user.id)
-                                                    props.toggleFollowingInProgress(false , user.id)
-                                                }})
-
+                                            props.followThunk(user.id)
                                         }
                                         }>Follow</Button>
                                     }
