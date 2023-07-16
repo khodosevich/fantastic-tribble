@@ -1,3 +1,5 @@
+import {getUserById} from "../api/methods";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
@@ -92,6 +94,15 @@ export const updateNewPostTextActionCreator = (newPost) => ({
     type:UPDATE_NEW_POST_TEXT, text:newPost
 })
 
+
+export const profileThunk = (profileId) => {
+    return (dispatch) => {
+        getUserById(profileId)
+            .then(response => {
+                dispatch(setUserProfile(response));
+            })
+    }
+}
 
 
 export default profileReducer;
