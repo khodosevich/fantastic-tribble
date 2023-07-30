@@ -10,28 +10,30 @@ import {Box} from "@mui/material";
 import ProfileContainer from "./components/pages/profile/ProfileContainer";
 import Login from "./components/login/Login";
 import HeaderContainer from "./components/header/HeaderContainer";
+import React from "react";
 
 function App(props) {
 
   return (<>
-           <Box className="main__container">
-                  <Box className="App">
-                      <Box className="wrapper">
-                          <HeaderContainer/>
-                          <Nav state={props.state} />
-                          <Routes>
-                              <Route path="/profile/*" element={ <ProfileContainer state={props.state.profileReducer.profilePage} dispatch={props.dispatch} />} />
-                              <Route path="/messages/*" element={<Messages state={props.state.dialogsReducer.dialogsPage} dispatch={props.dispatch}/>} />
-                              <Route path="/news" element={<News />} />
-                              <Route path="/music" element={<Music />} />
-                              <Route path="/setting" element={<Settings />} />
-                              <Route path="/findfriends" element={<FindFriends state={props.state.findFriendReducer} dispatch={props.dispatch}/>} />
-                              <Route path="/login" element={<Login/>} />
 
-                          </Routes>
-                      </Box>
-                  </Box>
+      <Box className="main__container">
+          <Box className="App">
+              <Box className="wrapper">
+                  <HeaderContainer/>
+                  <Nav state={props.state} />
+                  <Routes>
+                      <Route path="/profile/*" element={ <ProfileContainer authState={props.state.auth} state={props.state.profileReducer.profilePage} dispatch={props.dispatch} />} />
+                      <Route path="/messages/*" element={<Messages authState={props.state.auth} state={props.state.dialogsReducer.dialogsPage} dispatch={props.dispatch}/>} />
+                      <Route path="/news" element={<News />} />
+                      <Route path="/music" element={<Music />} />
+                      <Route path="/setting" element={<Settings />} />
+                      <Route path="/findfriends" element={<FindFriends state={props.state.findFriendReducer} dispatch={props.dispatch}/>} />
+                      <Route path="/login" element={<Login/>} />
+                  </Routes>
               </Box>
+          </Box>
+      </Box>
+
   </>
 
   );
